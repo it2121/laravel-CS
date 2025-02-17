@@ -9,6 +9,10 @@ class Model extends EloquentModel
 {
     public $timestamps = false;
     protected $guarded =[];
+
+
+
+    
     public function cars():HasMany{
 
         return $this-> hasMany(Car::class);

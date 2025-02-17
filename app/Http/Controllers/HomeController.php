@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use App\Models\Car;
+use App\Models\Maker;
+use App\Models\State;
 use App\Models\CarFeatures;
 
 class HomeController extends Controller
@@ -133,6 +135,35 @@ class HomeController extends Controller
 // dd(CarType::where(column: 'name','Sedan')->first()->cars);
 
 // dd($users->favouriteCars); 
+
+// $user = User::factory()->create();
+// dd($user);
+
+// //create 2 and add them 
+// $maker = Maker::factory()->count(2)->create();
+
+
+
+
+// //create 2 and add dont add them just leave them in $maker 
+// $maker = Maker::factory()->make();
+
+//  $maker = Maker::factory()->make();
+
+// dd($maker);
+
+
+
+
+//create and using a callback function that will exe after creating showing the created item
+ State::factory()
+->afterCreating(function (State $state){
+
+dump($state);
+
+})
+
+->create();
 
     return view('Home.index');
 }
