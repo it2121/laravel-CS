@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CarImage;
+use App\Models\CarType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use App\Models\Car;
+use App\Models\CarFeatures;
 
 class HomeController extends Controller
 {
@@ -73,18 +76,50 @@ class HomeController extends Controller
 
 
 
-  $car =Car::find(0);
-
-dd($car->featuers);
+  // $car =Car::find(0);
 
 
 
+// $car->featuers ->abs =0;
+// $car->featuers->save();
+
+
+// dump($car->featuers , $car->primaryImage);
 
 
 
+// $car =Car::find(1);
 
 
 
+//   $feater =  new CarFeatures();
+// $feater = CarFeatures::find(0);
+// $feater->car_id = 1;
+//  $feater->create($feater->getAttributes());
+
+
+// $car->featuers()->save($feater->n);
+
+// dump(Car::find(1)->featuers);
+
+
+$cars = Car::find(1);
+
+// $image = new CarImage();
+
+// $image = CarImage::find(1);
+// $image->car_id = 1;
+// $image->id = 2;
+
+// $image->create($image->getAttributes());
+
+// $image->id = 3;
+// $image->create($image->getAttributes());
+
+// $cars = Car::whereBelongsTo(CarType::where('name','Sedan')->first())->get();
+// dd(CarType::where(column: 'name','Sedan')->first()->cars);
+
+dd($cars);
 
     return view('Home.index');
 }
