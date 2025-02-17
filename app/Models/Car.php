@@ -19,7 +19,35 @@ return $this->hasMany(CarImage::class);
 
 }
 
+public function maker(): BelongsTo {
 
+    return $this->belongsTo(Maker::class);
+}
+
+public function model(): BelongsTo {
+
+    return $this->belongsTo(Model::class);
+}
+
+public function owner(): BelongsTo {
+
+    return $this->belongsTo(User::class,'user_id');
+}
+
+
+
+public function city(): BelongsTo {
+
+    return $this->belongsTo(City::class);
+}
+
+
+
+
+public function fuelType(): BelongsTo {
+
+    return $this->belongsTo(FuelType::class);
+}
 //many to one //
 public function carType():BelongsTo            {
     return $this->belongsTo(CarType::class);

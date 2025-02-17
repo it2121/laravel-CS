@@ -3,10 +3,21 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 class State extends Model
 {  public $timestamps = false;
     protected $guarded =[];
 
+    public function cars():HasMany{
 
+        return $this-> hasMany(Car::class);
+        
+        }
+
+        public function cities():HasMany{
+
+            return $this-> hasMany(City::class);
+            
+            }
 }
