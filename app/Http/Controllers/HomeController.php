@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\View;
 use App\Models\Car;
 use App\Models\Maker;
 use App\Models\State;
+use App\Models\Model;
 use App\Models\CarFeatures;
 
 class HomeController extends Controller
@@ -155,15 +156,37 @@ class HomeController extends Controller
 
 
 
-//create and using a callback function that will exe after creating showing the created item
- State::factory()
-->afterCreating(function (State $state){
+// //create and using a callback function that will exe after creating showing the created item
+//  State::factory()
+// ->afterCreating(function (State $state){
 
-dump($state);
+// dump($state);
 
-})
+// }
 
-->create();
+
+
+
+// //craete the main record and 5 models to each 25 in total 
+// Maker::factory()
+// ->count(5)
+// ->hasModels(5)
+// ->create();
+
+
+
+// // //craete the main record and 5 models to each 25 in total but in reverse
+// Model::factory()->count(3)
+// ->forMaker()
+// ->create();
+
+
+
+// // //craete the main record and 5 models to each 25 in total but in reverse
+// Model::factory()->count(3)
+// ->for(Maker::factory()->state(['name' => 'ass']))
+// ->create();
+
 
     return view('Home.index');
 }
