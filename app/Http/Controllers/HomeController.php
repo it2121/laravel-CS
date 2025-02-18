@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\CarImage;
 use App\Models\CarType;
+use App\Models\FuelType;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use App\Models\Car;
 use App\Models\Maker;
 use App\Models\State;
+use App\Models\City;
 use App\Models\Model;
 use App\Models\CarFeatures;
 
@@ -186,7 +188,63 @@ class HomeController extends Controller
 // Model::factory()->count(3)
 // ->for(Maker::factory()->state(['name' => 'ass']))
 // ->create();
+// User ::factory()
+// ->has( Car::factory()->count(5),'favouriteCars')
+// ->create();
 
+
+// Maker::factory()->count(5)->Create();
+
+
+// Model::factory()
+// ->forMaker()
+// ->count(5)->create();
+
+// city::factory()->has(State::factory()->count(5))->count(5)->create();
+
+// City::factory()
+// ->forState()
+// ->count(5)->create();
+User::factory()
+->count(3)->create();
+
+User::factory()
+->has( Car::factory()->count(50)
+->has(CarImage::factory()->count(5)->sequence (fn ()=>['position'=>1]),'images')
+->hasFeatuers()
+,'favouriteCars')
+->count(2)->create();
+
+// User ::factory()
+// ->create();
+
+//one to many
+// User::factory()
+// ->has(Car::factory()->count(5),'favouriteCars')
+// ->create();
+
+// dd(Model::where('maker_id',13)->inRandomOrder()->first()->id);
+
+// User::factory()
+// ->hasCar()
+// ->count(3)
+// ->create();
+//FuelType::factory(10)->create();
+
+
+// Model::factory()->count(5)
+// ->hasMaker()->count(5)
+// ->create();
+
+// User ::factory()
+// ->has( Car::factory()->count(5),'favouriteCars')
+// ->create();
+
+// Car::factory()
+// ->for(User::factory(),'owner')
+// ->create();
+// FuelType::factory()->count(3)->create();
+// state::factory()->count(5)->hasCities()->count(5)->Create();
 
     return view('Home.index');
 }

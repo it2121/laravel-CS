@@ -7,8 +7,9 @@ use App\Models\FuelType;
 use App\Models\User;
 use App\Models\City;
 use App\Models\Maker;
+use App\Models\Model;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model as ass;
 use Str;
 
 /**
@@ -26,8 +27,12 @@ class CarFactory extends Factory
         return [
            'maker_id' =>Maker::inRandomOrder()->first()->id,
            'model_id' =>function (array $attributes) { 
-            Model::where('maker_id',$attributes['maker_id'])
-            ->inRandomOrder()->first()->id;
+           
+
+
+          return  Model::where('maker_id',$attributes['maker_id'])->inRandomOrder()->first()->id;
+
+
            },
            'year' => fake()->year(),
            'price' => ((int)fake()->randomFloat(2,5,1000))*1000,
@@ -35,8 +40,8 @@ class CarFactory extends Factory
            'mileage' => ((int)fake()->randomFloat(2,5,500))*1000,
            'car_type_id' => CarType::inRandomOrder()->first()->id,
            'fuel_type_id' => FuelType::inRandomOrder()->first()->id,
-           'user_type_id' => User::inRandomOrder()->first()->id,
-           'city_type_id' => City::inRandomOrder()->first()->id,
+           'user_id' => User::inRandomOrder()->first()->id,
+           'city_id' => City::inRandomOrder()->first()->id,
            'address' => fake()->address(),
            'phone' =>function (array $attributes){
 

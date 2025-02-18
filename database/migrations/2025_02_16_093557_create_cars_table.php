@@ -21,8 +21,8 @@ return new class extends Migration
             $table->integer('mileage');
             $table->foreignId('car_type_id')->constrained('car_types');
             $table->foreignId('fuel_type_id')->constrained('fuel_types');
-            $table->foreignId('user_type_id')->constrained('users');
-            $table->foreignId('city_type_id')->constrained('cities');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('city_id')->constrained('cities');
             $table->string('address');
             $table->string('phone');
             $table->longText('description')->nullable();
