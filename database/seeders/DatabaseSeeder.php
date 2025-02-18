@@ -22,27 +22,59 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-for ($i = 0; $i < 5; $i++) {
-    Model::factory()
-    ->forMaker()
-    ->create();
+        Model::factory()->count(5)
+        ->forMaker()
+        ->create();
 
 
-}
+        Model::factory()->count(5)
+        ->forMaker()
+        ->create();
 
+        Model::factory()->count(5)
+        ->forMaker()
+        ->create();
+
+
+        Model::factory()->count(5)
+        ->forMaker()
+        ->create();
+
+
+        Model::factory()->count(5)
+        ->forMaker()
+        ->create();
+
+
+        Model::factory()->count(5)
+        ->forMaker()
+        ->create();
 
 
         Cartype::factory()->count(9)->create();
         FuelType::factory()->count(4)->create();
 
 
-        for ($i = 0; $i < 5; $i++) {
-            City::factory()
+            City::factory()->count(5)
             ->forState()
             ->create();
         
+            City::factory()->count(5)
+            ->forState()
+            ->create();
+            City::factory()->count(5)
+            ->forState()
+            ->create();
+            City::factory()->count(5)
+            ->forState()
+            ->create();
+            City::factory()->count(5)
+            ->forState()
+            ->create();
+            City::factory()->count(5)
+            ->forState()
+            ->create();
         
-        }
 
        
 
@@ -54,7 +86,8 @@ User::factory()
 
 User::factory()
 ->has( Car::factory()->count(50)
-->has(CarImage::factory()->count(5)->sequence (fn ()=>['position'=>1]),'images')
+->has(CarImage::factory()->count(5)->sequence (fn (Sequence $sequence)=>
+['position'=>$sequence->index%5+1]),'images')
 ->hasFeatuers()
 ,'favouriteCars')
 ->count(2)->create();

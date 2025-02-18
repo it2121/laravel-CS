@@ -205,15 +205,19 @@ class HomeController extends Controller
 // City::factory()
 // ->forState()
 // ->count(5)->create();
-User::factory()
-->count(3)->create();
+// User::factory()
+// ->count(3)->create();
 
-User::factory()
-->has( Car::factory()->count(50)
-->has(CarImage::factory()->count(5)->sequence (fn ()=>['position'=>1]),'images')
-->hasFeatuers()
-,'favouriteCars')
-->count(2)->create();
+// User::factory()
+// ->has( Car::factory()->count(50)
+// ->has(CarImage::factory()->count(5)->sequence (fn ()=>['position'=>1]),'images')
+// ->hasFeatuers()
+// ,'favouriteCars')
+// ->count(2)->create();
+
+// Model::factory()->count(5)
+// ->forMaker()
+// ->create();
 
 // User ::factory()
 // ->create();
