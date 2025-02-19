@@ -163,10 +163,10 @@ Js::from($hobbies)
         <h2>Latest Added Cars</h2>
         <div class="car-items-listing">
           
-          @for($i = 0 ; $i<15;$i++)
+         @foreach($cars as $car)
 
-          <x-carCard />
-          @endfor
+          <x-carCard :$car/>
+          @endforeach
 
 
 

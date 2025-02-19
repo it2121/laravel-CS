@@ -250,7 +250,22 @@ class HomeController extends Controller
 // FuelType::factory()->count(3)->create();
 // state::factory()->count(5)->hasCities()->count(5)->Create();
 
-    return view('Home.index');
+//dd($carimage);
+
+//  $cars =Car::find(1);
+//  dd($cars->primaryImage->image_path);
+ CarImage::find(1);
+ $cars = Car::where('published_at','<' ,now())
+ ->limit(30)
+ ->get();
+// dd($car->primaryImage());
+
+
+
+
+
+    return view('Home.index',['cars' => $cars]);
+    //return view('Home.index');
 }
  
 }

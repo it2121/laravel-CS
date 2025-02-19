@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CarImage;
 use Illuminate\Http\Request;
 use App\Models\Car;
 
@@ -36,7 +37,10 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
-        return view ("car.show");
+        CarImage::get();
+        $carr =$car;
+
+        return view ("car.show",['car' => $carr]);
     }
 
     /**
@@ -64,7 +68,14 @@ class CarController extends Controller
     }
     public function search()
     {
-        return view ("car.search");
+$images = CarImage::get();
+        $query = Car::where('published_at','<' ,now())
+        ->orderBy('published_at','desc');
+
+        $carCount = $query->count();
+        $cars = $query->limit(30)->get(); 
+
+        return view ("car.search",['cars'=>$cars , 'carCount'=>$carCount]);
 
     }
 }
