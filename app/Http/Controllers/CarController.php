@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CarImage;
 use Illuminate\Http\Request;
 use App\Models\Car;
+use App\Models\User;
 
 class CarController extends Controller
 {
@@ -13,7 +14,17 @@ class CarController extends Controller
      */
     public function index()
     {
-        return view ("car.index");
+
+        $images = CarImage::get();
+
+        $cars = User::find(8)
+        ->cars()
+        ->orderBy('created_at','desc')
+        ->get();
+
+
+
+        return view ("car.index",['cars'=>$cars]);
     }
 
     /**

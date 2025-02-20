@@ -83,6 +83,10 @@ public function featuers():HasOne{
 return $this->hasOne(CarFeatures::class);
     
 }
+public function getCreatedAtDate():string{
 
+return  (new \Carbon\Carbon($this->created_at))->format('Y-m-d');
+
+}
 }
 
