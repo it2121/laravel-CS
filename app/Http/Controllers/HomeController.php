@@ -261,7 +261,9 @@ class HomeController extends Controller
 // dd($car->primaryImage());
 
 
-
+// $columns = CarFeatures::find(2)->getAttributes();
+// $se = array_keys((array) $columns);
+// dd($se[0]);
 
 
     return view('Home.index',['cars' => $cars]);
