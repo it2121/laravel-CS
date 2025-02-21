@@ -256,6 +256,8 @@ class HomeController extends Controller
 //  dd($cars->primaryImage->image_path);
  CarImage::find(1);
  $cars = Car::where('published_at','<' ,now())
+ ->with(relations: ['primaryImage','city','carType','fuelType','maker','model'])
+ ->orderBy('published_at','desc')
  ->limit(30)
  ->get();
 // dd($car->primaryImage());

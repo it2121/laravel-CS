@@ -15,12 +15,16 @@ class CarController extends Controller
     public function index()
     {
 
+       
         $images = CarImage::get();
 
-        $cars = User::find(8)
+        $cars = User::find(7)
+
         ->cars()
+        ->with(relations: ['primaryImage','maker','model'])
+
         ->orderBy('created_at','desc')
-        ->get();
+        ->paginate(15);
 
 
 
@@ -81,12 +85,34 @@ class CarController extends Controller
     {
 $images = CarImage::get();
         $query = Car::where('published_at','<' ,now())
+        ->with(relations: ['primaryImage','city','carType','fuelType','maker','model'])
+
         ->orderBy('published_at','desc');
 
-        $carCount = $query->count();
-        $cars = $query->limit(30)->get(); 
+        //how to join sh*t together
+            $query ->join('cities','cities.id','=','cars.city_id')
+            // ->where ('cities.state_id','=',1)
+            ;
+       
+       
+        //     $carCount = $query->count();
+        // $cars = $query->limit(30)->get(); 
 
-        return view ("car.search",['cars'=>$cars , 'carCount'=>$carCount]);
+        $cars =$query->paginate(15);
+
+        return view ("car.search",['cars'=>$cars ]);
+
+    }
+    public function watchlist()
+    {
+$images = CarImage::get();
+        $cars = User::find(7)
+        ->favouriteCars()
+        ->with(relations: ['primaryImage','city','carType','fuelType','maker','model'])
+        ->paginate(15);
+     
+
+        return view ("car.watchlist",['cars'=>$cars ]);
 
     }
 }
